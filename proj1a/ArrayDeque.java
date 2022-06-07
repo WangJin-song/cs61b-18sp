@@ -2,21 +2,21 @@
  * @author Marcus
  * @create 2022-06-07 15:27
  */
-public class ArrayDeque<Item> {
+public class ArrayDeque<T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-    private Item[] items;
+    private T[] items;
     private static final int INITCAPACITY = 8;
     /** Creates an empty list. */
     public ArrayDeque() {
-        items = (Item[]) new Object[INITCAPACITY];
+        items = (T[]) new Object[INITCAPACITY];
         size = 0;
         nextFirst = 0;
         nextLast = 1;
     }
-    private void resize(int capacity) {
-        Item[] a = (Item[]) new Object[capacity];
+    public void resize(int capacity) {
+        T[] a = (T[]) new Object[capacity];
         if (nextFirst < nextLast) {
             System.arraycopy(items, nextFirst + 1, a, nextFirst + 1, size);
         } else {
@@ -27,7 +27,7 @@ public class ArrayDeque<Item> {
         items = a;
     }
     /** Adds an item to the front of the deque. */
-    public void addFirst(Item item) {
+    public void addFirst(T item) {
         items[nextFirst] = item;
         if (nextFirst == 0) {
             nextFirst = items.length - 1;
@@ -36,7 +36,7 @@ public class ArrayDeque<Item> {
         }
     }
     /** Adds an item to the back of the deque. */
-    public void addLast(Item item) {
+    public void addLast(T item) {
         items[nextLast] = item;
         if (nextFirst == items.length - 1) {
             nextLast = 0;
@@ -71,7 +71,7 @@ public class ArrayDeque<Item> {
         }
     }
     /** Removes and returns the item at the front of the deque. If no such item exists, returns null. */
-    public Item removeFirst() {
+    public T removeFirst() {
         if (nextFirst == items.length - 1) {
             nextFirst = 0;
         } else {
@@ -81,7 +81,7 @@ public class ArrayDeque<Item> {
         return items[nextFirst];
     }
     /** Removes and returns the item at the back of the deque. If no such items exists, returns null. */
-    public Item removeLast() {
+    public T removeLast() {
         if (nextLast == 0) {
             nextLast = items.length - 1;
         } else {
@@ -91,7 +91,7 @@ public class ArrayDeque<Item> {
         return items[nextLast];
     }
     /** Gets the item at the given index. If no such item exists, returns null. Must not alter the deque! */
-    public Item get(int index) {
+    public T get(int index) {
         if (index > size || index < 0) {
             return null;
         }
