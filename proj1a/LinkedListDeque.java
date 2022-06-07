@@ -106,12 +106,12 @@ public class LinkedListDeque<T> {
         if (index > size - 1 || index < 0) {
             return null;
         }
-        return getStuffNode(sentinel.next, index).item;
+        return getStuffNode(sentinel.next, index);
     }
-    private StuffNode getStuffNode(StuffNode node, int index) {
+    private T getStuffNode(StuffNode node, int index) {
         if (index == 0) {
-            return node;
+            return node.item;
         }
-        return getStuffNode(node.next, index--);
+        return getStuffNode(node.next, index - 1);
     }
 }
