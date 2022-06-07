@@ -26,7 +26,10 @@ public class LinkedListDeque<T> {
     /** Adds an item to the front of the deque. */
     public void addFirst(T item) {
         StuffNode first = new StuffNode(item, sentinel, sentinel.next);
+        StuffNode temp = sentinel.next;
         sentinel.next = first;
+        first.prev = sentinel;
+        first.next = temp;
         if (size == 0) {
             sentinel.prev = first;
         }
@@ -35,7 +38,10 @@ public class LinkedListDeque<T> {
     /** Adds an item to the back of the deque. */
     public void addLast(T item) {
         StuffNode last = new StuffNode(item, sentinel.prev, sentinel);
+        StuffNode temp = sentinel.prev;
         sentinel.prev = last;
+        last.next = sentinel;
+        last.prev = temp;
         if (size == 0) {
             sentinel.next = last;
         }
