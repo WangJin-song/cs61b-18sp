@@ -68,7 +68,8 @@ public class LinkedListDeque<T> {
             ptr = ptr.next;
         }
     }
-    /** Removes and returns the item at the front of the deque. If no such item exists, returns null. */
+    /** Removes and returns the item at the front of the deque.
+     * If no such item exists, returns null. */
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -79,7 +80,8 @@ public class LinkedListDeque<T> {
         size--;
         return first.item;
     }
-    /** Removes and returns the item at the back of the deque. If no such items exists, returns null. */
+    /** Removes and returns the item at the back of the deque.
+     * If no such items exists, returns null. */
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -90,7 +92,8 @@ public class LinkedListDeque<T> {
         size--;
         return last.item;
     }
-    /** Gets the item at the given index. If no such item exists, returns null. Must not alter the deque! */
+    /** Gets the item at the given index. If no such item exists, returns null.
+     * Must not alter the deque! */
     public T get(int index) {
         if (index > size - 1 || index < 0) {
             return null;
