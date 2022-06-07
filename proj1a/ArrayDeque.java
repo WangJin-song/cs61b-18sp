@@ -23,6 +23,7 @@ public class ArrayDeque<T> {
             System.arraycopy(items, 0, a, 0, nextLast);
             System.arraycopy(items, nextFirst + 1, a,
                     capacity - items.length + nextFirst + 1, items.length - nextFirst - 1);
+            nextFirst += capacity - items.length;
         }
         items = a;
     }
@@ -35,7 +36,7 @@ public class ArrayDeque<T> {
         } else {
             nextFirst--;
         }
-        if (1.0 * size / items.length > 0.7) {
+        if (1.0 * size / items.length > 0.8) {
             resize(items.length * 2);
         }
     }
@@ -43,13 +44,14 @@ public class ArrayDeque<T> {
     public void addLast(T item) {
         size++;
         items[nextLast] = item;
-        if (nextFirst == items.length - 1) {
+        if (nextLast == items.length - 1) {
             nextLast = 0;
         } else {
             nextLast++;
         }
-        if (1.0 * size / items.length > 0.7) {
+        if (1.0 * size / items.length > 0.8) {
             resize(items.length * 2);
+
         }
     }
     /** Returns true if deque is empty, false otherwise. */
@@ -85,6 +87,7 @@ public class ArrayDeque<T> {
         } else {
             nextFirst++;
         }
+        items[nextFirst] = null;
         size--;
         if (1.0 * size / items.length < 0.4 && items.length > 16) {
             resize(items.length / 2);
@@ -98,6 +101,7 @@ public class ArrayDeque<T> {
         } else {
             nextLast--;
         }
+        items[nextLast] = null;
         size--;
         if (1.0 * size / items.length < 0.4 && items.length > 16) {
             resize(items.length / 2);
