@@ -30,6 +30,7 @@ public class LinkedListDeque<T> {
         sentinel.next = first;
         first.prev = sentinel;
         first.next = temp;
+        temp.prev = first;
         if (size == 0) {
             sentinel.prev = first;
         }
@@ -42,6 +43,7 @@ public class LinkedListDeque<T> {
         sentinel.prev = last;
         last.next = sentinel;
         last.prev = temp;
+        temp.next = last;
         if (size == 0) {
             sentinel.next = last;
         }
