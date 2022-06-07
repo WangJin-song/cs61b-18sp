@@ -15,7 +15,7 @@ public class ArrayDeque<T> {
         nextFirst = 0;
         nextLast = 1;
     }
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         if (nextFirst < nextLast) {
             System.arraycopy(items, nextFirst + 1, a, nextFirst + 1, size);
@@ -28,20 +28,28 @@ public class ArrayDeque<T> {
     }
     /** Adds an item to the front of the deque. */
     public void addFirst(T item) {
+        size++;
         items[nextFirst] = item;
         if (nextFirst == 0) {
             nextFirst = items.length - 1;
         } else {
             nextFirst--;
         }
+        if (1.0 * size / items.length > 0.7) {
+            resize(items.length * 2);
+        }
     }
     /** Adds an item to the back of the deque. */
     public void addLast(T item) {
+        size++;
         items[nextLast] = item;
         if (nextFirst == items.length - 1) {
             nextLast = 0;
         } else {
             nextLast++;
+        }
+        if (1.0 * size / items.length > 0.7) {
+            resize(items.length * 2);
         }
     }
     /** Returns true if deque is empty, false otherwise. */
@@ -78,6 +86,9 @@ public class ArrayDeque<T> {
             nextFirst++;
         }
         size--;
+        if (1.0 * size / items.length < 0.4 && items.length > 16) {
+            resize(items.length / 2);
+        }
         return items[nextFirst];
     }
     /** Removes and returns the item at the back of the deque. If no such items exists, returns null. */
@@ -88,6 +99,9 @@ public class ArrayDeque<T> {
             nextLast--;
         }
         size--;
+        if (1.0 * size / items.length < 0.4 && items.length > 16) {
+            resize(items.length / 2);
+        }
         return items[nextLast];
     }
     /** Gets the item at the given index. If no such item exists, returns null. Must not alter the deque! */
