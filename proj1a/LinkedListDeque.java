@@ -13,7 +13,6 @@ public class LinkedListDeque<T> {
             next = n;
         }
     }
-    /** The first item (if it exists) is at sentinel.next. */
     private int size;
     private StuffNode sentinel;
     /** Creates an empty linked list deque. */
