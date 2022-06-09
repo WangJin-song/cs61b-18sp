@@ -18,7 +18,9 @@ public class ArrayDeque<T> {
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         if (nextFirst < nextLast) {
-            System.arraycopy(items, nextFirst + 1, a, nextFirst + 1, size);
+            System.arraycopy(items, nextFirst + 1, a, 0, size);
+            nextFirst = capacity - 1;
+            nextLast = size;
         } else {
             System.arraycopy(items, 0, a, 0, nextLast);
             System.arraycopy(items, nextFirst + 1, a,
@@ -67,20 +69,21 @@ public class ArrayDeque<T> {
     }
     /** Prints the items in the deque from first to last, seperated by space. */
     public void printDeque() {
-        if (nextFirst < nextLast){
+        if (nextFirst < nextLast) {
             for (int i = nextFirst + 1; i < nextLast; i++) {
                 System.out.println(items[i] + " ");
             }
         } else {
-            for (int i = nextFirst + 1; i < items.length; i ++) {
+            for (int i = nextFirst + 1; i < items.length; i++) {
                 System.out.println(items[i] + " ");
             }
-            for (int i = 0; i < nextLast; i ++) {
+            for (int i = 0; i < nextLast; i++) {
                 System.out.println(items[i] + " ");
             }
         }
     }
-    /** Removes and returns the item at the front of the deque. If no such item exists, returns null. */
+    /** Removes and returns the item at the front of the deque.
+     * If no such item exists, returns null. */
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -98,7 +101,8 @@ public class ArrayDeque<T> {
         }
         return res;
     }
-    /** Removes and returns the item at the back of the deque. If no such items exists, returns null. */
+    /** Removes and returns the item at the back of the deque.
+     * If no such items exists, returns null. */
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -116,7 +120,8 @@ public class ArrayDeque<T> {
         }
         return res;
     }
-    /** Gets the item at the given index. If no such item exists, returns null. Must not alter the deque! */
+    /** Gets the item at the given index. If no such item exists, returns null.
+     * Must not alter the deque! */
     public T get(int index) {
         if (index > size || index < 0) {
             return null;
