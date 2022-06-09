@@ -90,12 +90,13 @@ public class ArrayDeque<T> {
         } else {
             nextFirst++;
         }
+        T res = items[nextFirst];
         items[nextFirst] = null;
         size--;
         if (1.0 * size / items.length < 0.4 && items.length > 8) {
             resize(items.length / 2);
         }
-        return items[nextFirst];
+        return res;
     }
     /** Removes and returns the item at the back of the deque. If no such items exists, returns null. */
     public T removeLast() {
@@ -107,12 +108,13 @@ public class ArrayDeque<T> {
         } else {
             nextLast--;
         }
+        T res = items[nextLast];
         items[nextLast] = null;
         size--;
         if (1.0 * size / items.length < 0.4 && items.length > 8) {
             resize(items.length / 2);
         }
-        return items[nextLast];
+        return res;
     }
     /** Gets the item at the given index. If no such item exists, returns null. Must not alter the deque! */
     public T get(int index) {
