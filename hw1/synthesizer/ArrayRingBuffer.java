@@ -76,14 +76,22 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     }
 
     private class BufferIterator implements Iterator<T> {
+        private int pos;
+        private int curNum;
+        public BufferIterator() {
+            pos = first;
+            curNum = 0;
+        }
         @Override
         public boolean hasNext() {
-            return fillCount >= 0;
+            return curNum < fillCount;
         }
-
         @Override
         public T next() {
-            return rb[first];
+            T ret = rb[pos];
+            curNum++;
+            pos = (pos + 1) % capacity;
+            return ret;
         }
     }
 }
