@@ -16,12 +16,11 @@ public interface BoundedQueue<T> extends Iterable<T> {
     T dequeue();
     // return (but do not delete) item from the front
     T peek();
-    @Override
     Iterator<T> iterator();
     default boolean isEmpty() {
-        return false;
+        return fillCount() == 0;
     }
     default boolean isFull() {
-        return false;
+        return capacity() == fillCount();
     }
 }

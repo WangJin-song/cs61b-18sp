@@ -78,7 +78,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     private class BufferIterator implements Iterator<T> {
         @Override
         public boolean hasNext() {
-            return fillCount != 0;
+            return fillCount >= 0;
         }
 
         @Override
