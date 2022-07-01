@@ -36,9 +36,4 @@ public class PercolationStats {
     public double confidenceHigh() {
         return mean() + 1.96 * stddev() / Math.pow(openNums.length, 0.5);
     }
-
-    public static void main(String[] args) {
-        PercolationStats stats = new PercolationStats(200, 100, new PercolationFactory());
-        System.out.println(stats.stddev());
-    }
 }
