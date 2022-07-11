@@ -8,7 +8,7 @@ import java.util.Objects;
  * Created by hug. See https://goo.gl/MVL8up for details on these puzzles.
  */
 public class CommonBugDetector {
-/*
+
     public static class CommonBugPuzzleState implements WorldState {
         private char name;
         public CommonBugPuzzleState() {
@@ -84,5 +84,5 @@ public class CommonBugDetector {
                            + " enqueued in your MinPQ and compare to the comments.");
         // if you print out the total number of items enqueued by s3
         // it should be approximately 25, not approximately 50.
-    } */
+    }
 }

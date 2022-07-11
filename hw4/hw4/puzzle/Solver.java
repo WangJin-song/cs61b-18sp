@@ -2,8 +2,7 @@ package hw4.puzzle;
 
 import edu.princeton.cs.algs4.MinPQ;
 
-import java.util.*;
-
+import java.util.LinkedList;
 /**
  * @author Marcus
  * @create 2022-07-10 16:27

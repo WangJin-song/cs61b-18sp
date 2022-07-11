@@ -1,5 +1,6 @@
 package hw4.puzzle;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -8,7 +9,7 @@ public class EightPuzzleSolver {
      * Test routine for your Solver class. Uncomment and run to test
      * your basic functionality.
     **********************************************************************/
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         In in = new In(args[0]);
         int N = in.readInt();
         int[][] tiles = new int[N][N];
@@ -23,5 +24,5 @@ public class EightPuzzleSolver {
         for (WorldState ws : solver.solution()) {
             StdOut.println(ws);
         }
-    }*/
+    }
 }
